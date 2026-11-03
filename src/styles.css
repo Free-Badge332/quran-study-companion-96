@@ -206,6 +206,12 @@
 }
 
 @font-face {
+  font-family: "dseg7";
+  src: url("/fonts/dseg7-bold.woff2") format("woff2");
+  font-display: block;
+}
+
+@font-face {
   font-family: "uthmanic";
   src: url("/fonts/uthmanic.ttf") format("truetype");
   font-display: swap;
