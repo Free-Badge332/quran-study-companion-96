@@ -1,0 +1,35 @@
+// Wording for the home dashboard widgets and the Ramadan dashboard.
+// Amharic/Afaan Oromoo entries left empty fall back to English until verified translations exist.
+export const homeEn = {
+  homeTasbih: "Digital Tasbih",
+  openFull: "Open full",
+  customTarget: "Custom",
+  customTargetPrompt: "Custom target (1–10000)",
+  setTarget: "Set",
+  quranGoal: "Daily Quran goal",
+  goalMinutes: "{a} of {b} min today",
+  goalDone: "Goal met today",
+  goalEdit: "Daily goal",
+  minN: "{n} min",
+  keepReading: "Keep reading",
+  startReading: "Start reading",
+  recentlyPlayed: "Recently played",
+  resumeListening: "Resume",
+  quickAccess: "Quick access",
+  suhoorIn: "Suhoor ends in",
+  iftarIn: "Iftar in",
+  checklistTitle: "Today's worship",
+  ck_fasted: "Fasted today",
+  ck_fivePrayers: "Five daily prayers",
+  ck_taraweeh: "Taraweeh",
+  ck_quran: "Read Quran",
+  ck_morningAzkar: "Morning azkar",
+  ck_eveningAzkar: "Evening azkar",
+  ck_sadaqah: "Gave sadaqah",
+  checklistDone: "{a} of {b} done",
+  allDone: "All done today — may Allah accept it",
+  outsideRamadan: "Ramadan isn't here yet. Times and tracker stay ready for when it begins.",
+  prayerSettings: "Location & calculation",
+};
+export type HomeKey = keyof typeof homeEn;
+export const homeBlank = Object.fromEntries(Object.keys(homeEn).map((k) => [k, ""])) as Record<HomeKey, string>;

@@ -1,0 +1,10 @@
+import { createRoot } from 'react-dom/client';
+import { RouterProvider } from '@tanstack/react-router';
+import { getRouter } from '../src/router';
+import { initNative } from './native';
+import '../src/styles.css';
+const root = document.getElementById('root');
+if (!root) throw new Error('Application root missing');
+const router = getRouter();
+createRoot(root).render(<RouterProvider router={router} />);
+void initNative(router);

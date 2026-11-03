@@ -10,33 +10,349 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BookmarksRouteImport } from './routes/bookmarks'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as DownloadsRouteImport } from './routes/downloads'
+import { Route as IconsRouteImport } from './routes/icons'
+import { Route as LecturesRouteImport } from './routes/lectures'
+import { Route as MoreRouteImport } from './routes/more'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as QiblaRouteImport } from './routes/qibla'
+import { Route as QuranRouteImport } from './routes/quran'
+import { Route as RamadanRouteImport } from './routes/ramadan'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as StatisticsRouteImport } from './routes/statistics'
+import { Route as TasbihRouteImport } from './routes/tasbih'
+import { Route as AzkarIndexRouteImport } from './routes/azkar.index'
+import { Route as AzkarCategoryRouteImport } from './routes/azkar.$category'
+import { Route as ChapterIdRouteImport } from './routes/chapter.$id'
+import { Route as DuasIndexRouteImport } from './routes/duas.index'
+import { Route as DuasCategoryRouteImport } from './routes/duas.$category'
+import { Route as HadithIndexRouteImport } from './routes/hadith.index'
+import { Route as RecitersIndexRouteImport } from './routes/reciters.index'
+import { Route as RecitersIdRouteImport } from './routes/reciters.$id'
+import { Route as HadithCollectionIndexRouteImport } from './routes/hadith.$collection.index'
+import { Route as HadithCollectionBookRouteImport } from './routes/hadith.$collection.$book'
+import { Route as HadithCollectionNNumberRouteImport } from './routes/hadith.$collection.n.$number'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BookmarksRoute = BookmarksRouteImport.update({
+  id: '/bookmarks',
+  path: '/bookmarks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DownloadsRoute = DownloadsRouteImport.update({
+  id: '/downloads',
+  path: '/downloads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IconsRoute = IconsRouteImport.update({
+  id: '/icons',
+  path: '/icons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LecturesRoute = LecturesRouteImport.update({
+  id: '/lectures',
+  path: '/lectures',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoreRoute = MoreRouteImport.update({
+  id: '/more',
+  path: '/more',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QiblaRoute = QiblaRouteImport.update({
+  id: '/qibla',
+  path: '/qibla',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuranRoute = QuranRouteImport.update({
+  id: '/quran',
+  path: '/quran',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RamadanRoute = RamadanRouteImport.update({
+  id: '/ramadan',
+  path: '/ramadan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatisticsRoute = StatisticsRouteImport.update({
+  id: '/statistics',
+  path: '/statistics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TasbihRoute = TasbihRouteImport.update({
+  id: '/tasbih',
+  path: '/tasbih',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AzkarIndexRoute = AzkarIndexRouteImport.update({
+  id: '/azkar/',
+  path: '/azkar/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AzkarCategoryRoute = AzkarCategoryRouteImport.update({
+  id: '/azkar/$category',
+  path: '/azkar/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChapterIdRoute = ChapterIdRouteImport.update({
+  id: '/chapter/$id',
+  path: '/chapter/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DuasIndexRoute = DuasIndexRouteImport.update({
+  id: '/duas/',
+  path: '/duas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DuasCategoryRoute = DuasCategoryRouteImport.update({
+  id: '/duas/$category',
+  path: '/duas/$category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HadithIndexRoute = HadithIndexRouteImport.update({
+  id: '/hadith/',
+  path: '/hadith/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecitersIndexRoute = RecitersIndexRouteImport.update({
+  id: '/reciters/',
+  path: '/reciters/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecitersIdRoute = RecitersIdRouteImport.update({
+  id: '/reciters/$id',
+  path: '/reciters/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HadithCollectionIndexRoute = HadithCollectionIndexRouteImport.update({
+  id: '/hadith/$collection/',
+  path: '/hadith/$collection/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HadithCollectionBookRoute = HadithCollectionBookRouteImport.update({
+  id: '/hadith/$collection/$book',
+  path: '/hadith/$collection/$book',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HadithCollectionNNumberRoute = HadithCollectionNNumberRouteImport.update({
+  id: '/hadith/$collection/n/$number',
+  path: '/hadith/$collection/n/$number',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bookmarks': typeof BookmarksRoute
+  '/community': typeof CommunityRoute
+  '/downloads': typeof DownloadsRoute
+  '/icons': typeof IconsRoute
+  '/lectures': typeof LecturesRoute
+  '/more': typeof MoreRoute
+  '/privacy': typeof PrivacyRoute
+  '/qibla': typeof QiblaRoute
+  '/quran': typeof QuranRoute
+  '/ramadan': typeof RamadanRoute
+  '/settings': typeof SettingsRoute
+  '/statistics': typeof StatisticsRoute
+  '/tasbih': typeof TasbihRoute
+  '/azkar/$category': typeof AzkarCategoryRoute
+  '/chapter/$id': typeof ChapterIdRoute
+  '/duas/$category': typeof DuasCategoryRoute
+  '/reciters/$id': typeof RecitersIdRoute
+  '/azkar/': typeof AzkarIndexRoute
+  '/duas/': typeof DuasIndexRoute
+  '/hadith/': typeof HadithIndexRoute
+  '/reciters/': typeof RecitersIndexRoute
+  '/hadith/$collection/$book': typeof HadithCollectionBookRoute
+  '/hadith/$collection/': typeof HadithCollectionIndexRoute
+  '/hadith/$collection/n/$number': typeof HadithCollectionNNumberRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bookmarks': typeof BookmarksRoute
+  '/community': typeof CommunityRoute
+  '/downloads': typeof DownloadsRoute
+  '/icons': typeof IconsRoute
+  '/lectures': typeof LecturesRoute
+  '/more': typeof MoreRoute
+  '/privacy': typeof PrivacyRoute
+  '/qibla': typeof QiblaRoute
+  '/quran': typeof QuranRoute
+  '/ramadan': typeof RamadanRoute
+  '/settings': typeof SettingsRoute
+  '/statistics': typeof StatisticsRoute
+  '/tasbih': typeof TasbihRoute
+  '/azkar/$category': typeof AzkarCategoryRoute
+  '/chapter/$id': typeof ChapterIdRoute
+  '/duas/$category': typeof DuasCategoryRoute
+  '/reciters/$id': typeof RecitersIdRoute
+  '/azkar': typeof AzkarIndexRoute
+  '/duas': typeof DuasIndexRoute
+  '/hadith': typeof HadithIndexRoute
+  '/reciters': typeof RecitersIndexRoute
+  '/hadith/$collection/$book': typeof HadithCollectionBookRoute
+  '/hadith/$collection': typeof HadithCollectionIndexRoute
+  '/hadith/$collection/n/$number': typeof HadithCollectionNNumberRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bookmarks': typeof BookmarksRoute
+  '/community': typeof CommunityRoute
+  '/downloads': typeof DownloadsRoute
+  '/icons': typeof IconsRoute
+  '/lectures': typeof LecturesRoute
+  '/more': typeof MoreRoute
+  '/privacy': typeof PrivacyRoute
+  '/qibla': typeof QiblaRoute
+  '/quran': typeof QuranRoute
+  '/ramadan': typeof RamadanRoute
+  '/settings': typeof SettingsRoute
+  '/statistics': typeof StatisticsRoute
+  '/tasbih': typeof TasbihRoute
+  '/azkar/$category': typeof AzkarCategoryRoute
+  '/chapter/$id': typeof ChapterIdRoute
+  '/duas/$category': typeof DuasCategoryRoute
+  '/reciters/$id': typeof RecitersIdRoute
+  '/azkar/': typeof AzkarIndexRoute
+  '/duas/': typeof DuasIndexRoute
+  '/hadith/': typeof HadithIndexRoute
+  '/reciters/': typeof RecitersIndexRoute
+  '/hadith/$collection/$book': typeof HadithCollectionBookRoute
+  '/hadith/$collection/': typeof HadithCollectionIndexRoute
+  '/hadith/$collection/n/$number': typeof HadithCollectionNNumberRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/bookmarks'
+    | '/community'
+    | '/downloads'
+    | '/icons'
+    | '/lectures'
+    | '/more'
+    | '/privacy'
+    | '/qibla'
+    | '/quran'
+    | '/ramadan'
+    | '/settings'
+    | '/statistics'
+    | '/tasbih'
+    | '/azkar/$category'
+    | '/chapter/$id'
+    | '/duas/$category'
+    | '/reciters/$id'
+    | '/azkar/'
+    | '/duas/'
+    | '/hadith/'
+    | '/reciters/'
+    | '/hadith/$collection/$book'
+    | '/hadith/$collection/'
+    | '/hadith/$collection/n/$number'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/bookmarks'
+    | '/community'
+    | '/downloads'
+    | '/icons'
+    | '/lectures'
+    | '/more'
+    | '/privacy'
+    | '/qibla'
+    | '/quran'
+    | '/ramadan'
+    | '/settings'
+    | '/statistics'
+    | '/tasbih'
+    | '/azkar/$category'
+    | '/chapter/$id'
+    | '/duas/$category'
+    | '/reciters/$id'
+    | '/azkar'
+    | '/duas'
+    | '/hadith'
+    | '/reciters'
+    | '/hadith/$collection/$book'
+    | '/hadith/$collection'
+    | '/hadith/$collection/n/$number'
+  id:
+    | '__root__'
+    | '/'
+    | '/bookmarks'
+    | '/community'
+    | '/downloads'
+    | '/icons'
+    | '/lectures'
+    | '/more'
+    | '/privacy'
+    | '/qibla'
+    | '/quran'
+    | '/ramadan'
+    | '/settings'
+    | '/statistics'
+    | '/tasbih'
+    | '/azkar/$category'
+    | '/chapter/$id'
+    | '/duas/$category'
+    | '/reciters/$id'
+    | '/azkar/'
+    | '/duas/'
+    | '/hadith/'
+    | '/reciters/'
+    | '/hadith/$collection/$book'
+    | '/hadith/$collection/'
+    | '/hadith/$collection/n/$number'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BookmarksRoute: typeof BookmarksRoute
+  CommunityRoute: typeof CommunityRoute
+  DownloadsRoute: typeof DownloadsRoute
+  IconsRoute: typeof IconsRoute
+  LecturesRoute: typeof LecturesRoute
+  MoreRoute: typeof MoreRoute
+  PrivacyRoute: typeof PrivacyRoute
+  QiblaRoute: typeof QiblaRoute
+  QuranRoute: typeof QuranRoute
+  RamadanRoute: typeof RamadanRoute
+  SettingsRoute: typeof SettingsRoute
+  StatisticsRoute: typeof StatisticsRoute
+  TasbihRoute: typeof TasbihRoute
+  AzkarCategoryRoute: typeof AzkarCategoryRoute
+  ChapterIdRoute: typeof ChapterIdRoute
+  DuasCategoryRoute: typeof DuasCategoryRoute
+  RecitersIdRoute: typeof RecitersIdRoute
+  AzkarIndexRoute: typeof AzkarIndexRoute
+  DuasIndexRoute: typeof DuasIndexRoute
+  HadithIndexRoute: typeof HadithIndexRoute
+  RecitersIndexRoute: typeof RecitersIndexRoute
+  HadithCollectionBookRoute: typeof HadithCollectionBookRoute
+  HadithCollectionIndexRoute: typeof HadithCollectionIndexRoute
+  HadithCollectionNNumberRoute: typeof HadithCollectionNNumberRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +364,203 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bookmarks': {
+      id: '/bookmarks'
+      path: '/bookmarks'
+      fullPath: '/bookmarks'
+      preLoaderRoute: typeof BookmarksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/downloads': {
+      id: '/downloads'
+      path: '/downloads'
+      fullPath: '/downloads'
+      preLoaderRoute: typeof DownloadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/icons': {
+      id: '/icons'
+      path: '/icons'
+      fullPath: '/icons'
+      preLoaderRoute: typeof IconsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lectures': {
+      id: '/lectures'
+      path: '/lectures'
+      fullPath: '/lectures'
+      preLoaderRoute: typeof LecturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/more': {
+      id: '/more'
+      path: '/more'
+      fullPath: '/more'
+      preLoaderRoute: typeof MoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qibla': {
+      id: '/qibla'
+      path: '/qibla'
+      fullPath: '/qibla'
+      preLoaderRoute: typeof QiblaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quran': {
+      id: '/quran'
+      path: '/quran'
+      fullPath: '/quran'
+      preLoaderRoute: typeof QuranRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ramadan': {
+      id: '/ramadan'
+      path: '/ramadan'
+      fullPath: '/ramadan'
+      preLoaderRoute: typeof RamadanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/statistics': {
+      id: '/statistics'
+      path: '/statistics'
+      fullPath: '/statistics'
+      preLoaderRoute: typeof StatisticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tasbih': {
+      id: '/tasbih'
+      path: '/tasbih'
+      fullPath: '/tasbih'
+      preLoaderRoute: typeof TasbihRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/azkar/': {
+      id: '/azkar/'
+      path: '/azkar'
+      fullPath: '/azkar/'
+      preLoaderRoute: typeof AzkarIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/azkar/$category': {
+      id: '/azkar/$category'
+      path: '/azkar/$category'
+      fullPath: '/azkar/$category'
+      preLoaderRoute: typeof AzkarCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chapter/$id': {
+      id: '/chapter/$id'
+      path: '/chapter/$id'
+      fullPath: '/chapter/$id'
+      preLoaderRoute: typeof ChapterIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/duas/': {
+      id: '/duas/'
+      path: '/duas'
+      fullPath: '/duas/'
+      preLoaderRoute: typeof DuasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/duas/$category': {
+      id: '/duas/$category'
+      path: '/duas/$category'
+      fullPath: '/duas/$category'
+      preLoaderRoute: typeof DuasCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hadith/': {
+      id: '/hadith/'
+      path: '/hadith'
+      fullPath: '/hadith/'
+      preLoaderRoute: typeof HadithIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reciters/': {
+      id: '/reciters/'
+      path: '/reciters'
+      fullPath: '/reciters/'
+      preLoaderRoute: typeof RecitersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reciters/$id': {
+      id: '/reciters/$id'
+      path: '/reciters/$id'
+      fullPath: '/reciters/$id'
+      preLoaderRoute: typeof RecitersIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hadith/$collection/': {
+      id: '/hadith/$collection/'
+      path: '/hadith/$collection'
+      fullPath: '/hadith/$collection/'
+      preLoaderRoute: typeof HadithCollectionIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hadith/$collection/$book': {
+      id: '/hadith/$collection/$book'
+      path: '/hadith/$collection/$book'
+      fullPath: '/hadith/$collection/$book'
+      preLoaderRoute: typeof HadithCollectionBookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hadith/$collection/n/$number': {
+      id: '/hadith/$collection/n/$number'
+      path: '/hadith/$collection/n/$number'
+      fullPath: '/hadith/$collection/n/$number'
+      preLoaderRoute: typeof HadithCollectionNNumberRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BookmarksRoute: BookmarksRoute,
+  CommunityRoute: CommunityRoute,
+  DownloadsRoute: DownloadsRoute,
+  IconsRoute: IconsRoute,
+  LecturesRoute: LecturesRoute,
+  MoreRoute: MoreRoute,
+  PrivacyRoute: PrivacyRoute,
+  QiblaRoute: QiblaRoute,
+  QuranRoute: QuranRoute,
+  RamadanRoute: RamadanRoute,
+  SettingsRoute: SettingsRoute,
+  StatisticsRoute: StatisticsRoute,
+  TasbihRoute: TasbihRoute,
+  AzkarCategoryRoute: AzkarCategoryRoute,
+  ChapterIdRoute: ChapterIdRoute,
+  DuasCategoryRoute: DuasCategoryRoute,
+  RecitersIdRoute: RecitersIdRoute,
+  AzkarIndexRoute: AzkarIndexRoute,
+  DuasIndexRoute: DuasIndexRoute,
+  HadithIndexRoute: HadithIndexRoute,
+  RecitersIndexRoute: RecitersIndexRoute,
+  HadithCollectionBookRoute: HadithCollectionBookRoute,
+  HadithCollectionIndexRoute: HadithCollectionIndexRoute,
+  HadithCollectionNNumberRoute: HadithCollectionNNumberRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

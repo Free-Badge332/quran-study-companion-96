@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">My Quran</string>
+    <string name="title_activity_main">My Quran</string>
+    <string name="package_name">com.ezadin.quranstudycompanion</string>
+    <string name="custom_url_scheme">com.ezadin.quranstudycompanion</string>
+</resources>
