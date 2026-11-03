@@ -383,3 +383,36 @@ html.native body { padding-inline: 0; }
   position: sticky;
   top: calc(var(--header-height) + var(--safe-top) + 0.5rem);
 }
+
+/* Navigation drawer: text-only, calm rows with a slim active marker. */
+@utility drawer-link {
+  position: relative;
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-foreground);
+  transition: background-color 160ms ease, color 160ms ease, padding 160ms ease;
+  &:hover { background-color: var(--color-muted); }
+  &:focus-visible { outline: 2px solid var(--color-ring); outline-offset: 1px; }
+}
+@utility drawer-link-active {
+  background-color: color-mix(in oklab, var(--color-primary) 9%, transparent);
+  color: var(--color-primary);
+  font-weight: 600;
+  padding-left: 1.1rem;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0.4rem;
+    top: 50%;
+    height: 1.1rem;
+    width: 3px;
+    transform: translateY(-50%);
+    border-radius: 999px;
+    background-color: var(--color-primary);
+  }
+}
