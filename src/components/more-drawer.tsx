@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
-import { Sheet, SheetClose, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import type { MsgKey } from "@/lib/i18n";
 import { LANGUAGES, type Lang } from "@/lib/quran";
 import { useLang } from "@/lib/lang";
@@ -64,15 +64,12 @@ export function MoreDrawer() {
           <Menu size={22} />
         </button>
       </SheetTrigger>
-      <SheetContent side="left" className="drawer-panel flex w-[82vw] max-w-xs flex-col gap-0 border-border bg-background p-0 [&>button:last-child]:hidden">
+      <SheetContent side="left" className="drawer-panel flex w-[82vw] max-w-xs flex-col gap-0 border-border bg-background p-0">
         <div className="flex items-center justify-between px-6 pb-5 pt-[calc(1.5rem+var(--safe-top,0px))]">
           <div className="min-w-0">
             <SheetTitle className="font-display text-2xl leading-tight text-primary">{tr("appName")}</SheetTitle>
             <SheetDescription className="mt-0.5 text-xs text-muted-foreground">{tr("moreTitle")}</SheetDescription>
           </div>
-          <SheetClose className="-mr-2 grid h-10 w-10 shrink-0 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground" aria-label="Close">
-            <X size={20} />
-          </SheetClose>
         </div>
         <nav aria-label={tr("navMore")} className="flex-1 overflow-y-auto px-3 pb-4">
           {GROUPS.map((g) => (
