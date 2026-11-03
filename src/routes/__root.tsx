@@ -10,8 +10,15 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
+import { FirstLaunchLanguage } from "../components/language-picker";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { LangProvider } from "../lib/lang";
+import { ThemeProvider, THEME_BOOT_SCRIPT } from "../lib/theme";
+import { BottomNav } from "@/components/bottom-nav";
+import { Onboarding } from "@/components/onboarding";
+import { SiteHeader } from "../components/site-header";
+import { OfflineStatus } from "../components/offline-status";
 
 function NotFoundComponent() {
   return (
@@ -77,22 +84,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { title: "My Quran" },
+      { name: "description", content: "Read, listen and learn the Holy Quran." },
+      { property: "og:title", content: "My Quran" },
+      { property: "og:description", content: "Read, listen and learn the Holy Quran." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -103,8 +105,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
         <HeadContent />
       </head>
       <body>
@@ -120,8 +123,18 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <ThemeProvider>
+      <LangProvider>
+        <SiteHeader />
+        <OfflineStatus />
+        <div className="app-content">
+          <Outlet />
+        </div>
+        <BottomNav />
+        <FirstLaunchLanguage />
+        <Onboarding />
+      </LangProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
