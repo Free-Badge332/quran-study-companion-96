@@ -1,45 +1,44 @@
-import { useEffect, useState, type ComponentType } from "react";
+import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { BarChart3, Download, Menu, Mic2, Settings, ShieldCheck } from "lucide-react";
-import { BookmarkIcon, DuaIcon, HadithIcon, LecturesIcon, MosqueIcon, QiblaIcon, TasbihIcon } from "@/components/icons/islamic";
+import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import type { MsgKey } from "@/lib/i18n";
+import { LANGUAGES, type Lang } from "@/lib/quran";
 import { useLang } from "@/lib/lang";
 
-type To = "/hadith" | "/lectures" | "/community" | "/tasbih" | "/duas" | "/qibla" | "/reciters" | "/downloads" | "/bookmarks" | "/statistics" | "/settings" | "/privacy";
-type Item = { to: To; label: MsgKey | string; icon: ComponentType<{ size?: number }> };
+type To = "/" | "/quran" | "/azkar" | "/ramadan" | "/hadith" | "/lectures" | "/community" | "/tasbih" | "/duas" | "/qibla" | "/reciters" | "/downloads" | "/bookmarks" | "/statistics" | "/settings" | "/privacy";
+type Item = { to: To; label: MsgKey | string };
 
-// Everything that used to live on the More page, grouped by purpose.
+// Text-only menu, grouped by purpose. Everything from the old More page lives here.
 const GROUPS: { title: MsgKey | string; items: Item[] }[] = [
   { title: "groupLearn", items: [
-    { to: "/hadith", label: "navHadith", icon: HadithIcon },
-    { to: "/lectures", label: "navLectures", icon: LecturesIcon },
-    { to: "/community", label: "navCommunity", icon: MosqueIcon },
+    { to: "/hadith", label: "navHadith" },
+    { to: "/lectures", label: "navLectures" },
+    { to: "/community", label: "navCommunity" },
   ] },
   { title: "groupWorship", items: [
-    { to: "/tasbih", label: "tasbihTitle", icon: TasbihIcon },
-    { to: "/duas", label: "navDuas", icon: DuaIcon },
-    { to: "/qibla", label: "navQibla", icon: QiblaIcon },
+    { to: "/tasbih", label: "tasbihTitle" },
+    { to: "/duas", label: "navDuas" },
+    { to: "/qibla", label: "navQibla" },
   ] },
   { title: "Audio", items: [
-    { to: "/reciters", label: "Reciters", icon: Mic2 },
-    { to: "/downloads", label: "Downloads", icon: Download },
+    { to: "/reciters", label: "Reciters" },
+    { to: "/downloads", label: "Downloads" },
   ] },
   { title: "groupYou", items: [
-    { to: "/bookmarks", label: "navBookmarks", icon: BookmarkIcon },
-    { to: "/statistics", label: "navStats", icon: BarChart3 },
-    { to: "/settings", label: "navSettings", icon: Settings },
-    { to: "/privacy", label: "Privacy Policy", icon: ShieldCheck },
+    { to: "/bookmarks", label: "navBookmarks" },
+    { to: "/statistics", label: "navStats" },
+    { to: "/settings", label: "navSettings" },
+    { to: "/privacy", label: "Privacy Policy" },
   ] },
 ];
 
 export function MoreDrawer() {
-  const { t } = useLang();
+  const { t, lang, setLang } = useLang();
   const tr = (k: string) => { try { const v = t(k as MsgKey); return v && v !== k ? v : k; } catch { return k; } };
   const [open, setOpen] = useState(false);
   const path = useRouterState({ select: (s) => s.location.pathname });
 
-  // Close whenever the page changes (selecting an item or browser back).
   useEffect(() => { setOpen(false); }, [path]);
 
   // Android hardware back button closes the drawer instead of leaving the page.
@@ -65,20 +64,19 @@ export function MoreDrawer() {
           <Menu size={22} />
         </button>
       </SheetTrigger>
-      <SheetContent side="left" className="flex w-[86vw] max-w-sm flex-col gap-0 overflow-y-auto border-border bg-background p-0">
-        <div className="flex items-center gap-3 border-b border-border px-5 pb-4 pt-[calc(1.25rem+var(--safe-top,0px))]">
-          <span className="grid h-10 w-10 place-items-center rounded-full bg-primary"><img src="/logo.png" alt="" className="h-7 w-7" /></span>
+      <SheetContent side="left" className="drawer-panel flex w-[82vw] max-w-xs flex-col gap-0 border-border bg-background p-0">
+        <div className="flex items-center justify-between px-6 pb-5 pt-[calc(1.5rem+var(--safe-top,0px))]">
           <div className="min-w-0">
-            <SheetTitle className="font-display text-xl text-primary">{tr("appName")}</SheetTitle>
-            <SheetDescription className="text-xs text-muted-foreground">{tr("moreTitle")}</SheetDescription>
+            <SheetTitle className="font-display text-2xl leading-tight text-primary">{tr("appName")}</SheetTitle>
+            <SheetDescription className="mt-0.5 text-xs text-muted-foreground">{tr("moreTitle")}</SheetDescription>
           </div>
         </div>
-        <nav aria-label={tr("navMore")} className="flex-1 px-3 py-4 pb-[calc(1rem+var(--safe-bottom,0px))]">
-          {GROUPS.map((g, i) => (
-            <section key={g.title} className={i > 0 ? "mt-4 border-t border-border pt-4" : ""}>
-              <h2 className="mb-1.5 px-3 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">{tr(g.title)}</h2>
-              <ul className="space-y-0.5">
-                {g.items.map(({ to, label, icon: Icon }) => {
+        <nav aria-label={tr("navMore")} className="flex-1 overflow-y-auto px-3 pb-4">
+          {GROUPS.map((g) => (
+            <section key={g.title} className="border-t border-border/70 py-3 first:border-t-0 first:pt-0">
+              <h2 className="px-3 pb-1 pt-1 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">{tr(g.title)}</h2>
+              <ul>
+                {g.items.map(({ to, label }) => {
                   const on = path === to || path.startsWith(to + "/");
                   return (
                     <li key={to}>
@@ -86,10 +84,9 @@ export function MoreDrawer() {
                         to={to}
                         onClick={() => setOpen(false)}
                         aria-current={on ? "page" : undefined}
-                        className={`flex min-h-12 items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition-colors ${on ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"}`}
+                        className={`drawer-link ${on ? "drawer-link-active" : ""}`}
                       >
-                        <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg ${on ? "bg-primary text-primary-foreground" : "bg-primary/10 text-primary"}`}><Icon size={19} /></span>
-                        <span className="flex-1 truncate">{tr(label)}</span>
+                        {tr(label)}
                       </Link>
                     </li>
                   );
@@ -98,6 +95,17 @@ export function MoreDrawer() {
             </section>
           ))}
         </nav>
+        <div className="border-t border-border px-6 py-4 pb-[calc(1rem+var(--safe-bottom,0px))]">
+          <label className="block text-[10.5px] font-semibold uppercase tracking-[0.14em] text-muted-foreground" htmlFor="drawer-lang">{tr("language")}</label>
+          <select
+            id="drawer-lang"
+            value={lang}
+            onChange={(e) => setLang(e.target.value as Lang)}
+            className="mt-2 min-h-11 w-full rounded-xl border border-input bg-card px-3 text-sm text-foreground"
+          >
+            {LANGUAGES.map((l) => <option key={l.id} value={l.id}>{l.label}</option>)}
+          </select>
+        </div>
       </SheetContent>
     </Sheet>
   );
